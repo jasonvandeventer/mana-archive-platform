@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mana-archive
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mana-archive
+  template:
+    metadata:
+      labels:
+        app: mana-archive
+    spec:
+      containers:
+        - name: mana-archive
+          image: ghcr.io/jasonvandeventer/mana-archive:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8501

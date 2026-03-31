@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mana-archive
+spec:
+  rules:
+    - host: mana.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mana-archive
+                port:
+                  number: 80
