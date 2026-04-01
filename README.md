@@ -71,6 +71,12 @@ ghcr.io/jasonvandeventer/mana-archive:latest
 
 ---
 
+## CI/CD
+
+This project uses GitHub Actions to automatically build and push container images to GitHub Container Registry (GHCR) on every push to the main branch.
+
+After a new image is published, Kubernetes can pull the updated image when the Deployment is restarted.
+
 ## Kubernetes Deployment
 
 ### Resources
@@ -150,8 +156,6 @@ Not yet implemented:
 
 ## Next Steps
 
-* Improve documentation and reproducibility
 * Add environment configuration management
-* Introduce CI/CD for automated builds and deployments
 * Evaluate database options for scaling beyond SQLite
 
