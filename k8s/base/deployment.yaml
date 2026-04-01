@@ -18,3 +18,10 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8501
+          volumeMounts:
+            - name: mana-archive-data
+              mountPath: /app/data
+      volumes:
+        - name: mana-archive-data
+          persistentVolumeClaim:
+            claimName: mana-archive-data
