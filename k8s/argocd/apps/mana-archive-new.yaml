@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mana-archive
+  name: mana-archive-new
   namespace: argocd
 spec:
   project: default
