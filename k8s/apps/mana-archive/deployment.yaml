@@ -5,6 +5,8 @@ metadata:
   namespace: mana-archive
 spec:
   replicas: 1
+  strategy:
+    type: recreate
   selector:
     matchLabels:
       app: mana-archive
@@ -15,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mana-archive
-          image: ghcr.io/jasonvandeventer/mana-archive:v2.1.1
+          image: ghcr.io/jasonvandeventer/mana-archive:v2.0.18
           imagePullPolicy: IfNotPresent
           env:
             - name: DATA_DIR
