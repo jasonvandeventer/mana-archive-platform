@@ -1,0 +1,23 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: mana-archive-updater
+  namespace: argocd
+spec:
+  namespace: argocd
+
+  writeBackConfig:
+    method: "git:secret:argocd/image-updater-git-creds"
+    gitConfig:
+      branch: "main"
+
+  applicationRefs:
+    - namePattern: "mana-archive"
+      images:
+        - alias: "manaarchive"
+          imageName: "ghcr.io/jasonvandeventer/mana-archive"
+          commonUpdateSettings:
+            updateStrategy: "semver"
+          manifestTargets:
+            kustomize:
+              name: "ghcr.io/jasonvandeventer/mana-archive"

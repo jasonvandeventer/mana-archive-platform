@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mana-archive
-          image: ghcr.io/jasonvandeventer/mana-archive:v2.0.18
+          image: ghcr.io/jasonvandeventer/mana-archive
           imagePullPolicy: IfNotPresent
           env:
             - name: DATA_DIR
