@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.atgoproj.io/sync-wave: "-1"
   labels:
-    app.kubernetes.io/version: v3.0.1
+    app.kubernetes.io/version: v3.0.2
 spec:
   template:
     spec:
