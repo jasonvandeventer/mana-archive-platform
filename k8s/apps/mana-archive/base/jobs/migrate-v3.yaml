@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mana-archive-migrate
+  namespace: mana-archive
+  annotations:
+    argocd.atgoproj.io/sync-wave: "-1"
+  labels:
+    app.kubernetes.io/version: v3.0.1
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrate
+          image: ghcr.io/jasonvandeventer/mana-archive:v3.0.1
+          command:
+            - python
+            - /app/scripts/migrate_v3_storage_locations.py
+          env:
+            - name: DATA_DIR
+              value: /data
+            - name: PYTHONPATH
+              value: /app
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: mana-archive-data-longhorn
