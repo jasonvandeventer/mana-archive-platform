@@ -1,4 +1,3 @@
-apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mana-archive
@@ -22,6 +21,11 @@ spec:
           env:
             - name: DATA_DIR
               value: /data
+            - name: SESSION_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mana-archive-secrets
+                  key: SESSION_SECRET_KEY
           ports:
             - containerPort: 8000
           volumeMounts:
