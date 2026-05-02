@@ -6,7 +6,6 @@ resources:
   - pvc.yaml
   - deployment.yaml
   - service.yaml
-  - jobs/migrate-v3-4.yaml
 
 images:
   - name: ghcr.io/jasonvandeventer/mana-archive
