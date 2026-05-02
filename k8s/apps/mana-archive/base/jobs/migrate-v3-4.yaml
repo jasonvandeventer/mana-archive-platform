@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   labels:
-    app.kubernetes.io/version: v3.4.0
+    app.kubernetes.io/version: v3.4.1
 spec:
   backoffLimit: 1
   template:
@@ -14,7 +14,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: migrate
-          image: ghcr.io/jasonvandeventer/mana-archive:v3.4.0
+          image: ghcr.io/jasonvandeventer/mana-archive:v3.4.1
           command:
             - python
             - /app/scripts/migrate_v3_4_decks_as_locations.py
