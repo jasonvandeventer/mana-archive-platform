@@ -15,9 +15,24 @@ spec:
       labels:
         app: mana-archive
     spec:
+      initContainers:
+        - name: migrate
+          image: ghcr.io/jasonvandeventer/mana-archive:v3.4.3
+          command:
+            - python
+            - /app/scripts/run_migrations.py
+          env:
+            - name: DATA_DIR
+              value: /data
+            - name: PYTHONPATH
+              value: /app
+          volumeMounts:
+            - name: mana-archive-data
+              mountPath: /data
+
       containers:
         - name: mana-archive
-          image: ghcr.io/jasonvandeventer/mana-archive
+          image: ghcr.io/jasonvandeventer/mana-archive:v3.4.3
           imagePullPolicy: IfNotPresent
           env:
             - name: DATA_DIR
@@ -32,6 +47,7 @@ spec:
           volumeMounts:
             - name: mana-archive-data
               mountPath: /data
+
       volumes:
         - name: mana-archive-data
           persistentVolumeClaim:
