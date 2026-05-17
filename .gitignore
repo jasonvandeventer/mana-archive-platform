@@ -1,0 +1,5 @@
+
+# Vault-symlinked project memory (CLAUDE.md, current-status.md point outside repo).
+# ArgoCD's repo-server rejects out-of-bounds symlinks; tracking them blocks all sync.
+CLAUDE.md
+current-status.md
